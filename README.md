@@ -11,9 +11,7 @@ This **README** file describes best practices to follow when you develop a web a
 
 This repository also contains an example application that demonstrates the described techniques. This application is split into three projects:
 
-- [ASP.NetCore.Reporting.MVC](https://github.com/DevExpress-Examples/AspNetCore.Reporting.BestPractices/tree/master/AspNetCore.Reporting.Angular) - An ASP.Net Core MVC application.
-- [ASP.NetCore.Reporting.Angular](https://github.com/DevExpress-Examples/AspNetCore.Reporting.BestPractices/tree/master/AspNetCore.Reporting.Angular) - An ASP.Net Core application with an Angular frontend.
-- [ASP.NetCore.Reporting.Common](https://github.com/DevExpress-Examples/AspNetCore.Reporting.BestPractices/tree/master/AspNetCore.Reporting.Common) - Implements services and business logic for the MVC and Angular projects.
+- [ASP.NetCore.Reporting.Common](https://github.com/DevExpress-Examples/AspNetCore.Reporting.BestPractices/tree/master/AspNetCore.Reporting.Common) - Implements services and business logic for the MVC projects.
 
 You can use the example code in your web application and modify it for different scenarios.
 
@@ -48,7 +46,6 @@ To run the example application, you need to install packages from the DevExpress
 ### Install NPM Dependencies
 
 - For the **ASP.NET Core MVC** project, run `npm install` in the project's root folder.
-- For the **Angular** project, navigate to the **ClientApp** directory and run `npm install`.
 
 ### Start the Application
 
