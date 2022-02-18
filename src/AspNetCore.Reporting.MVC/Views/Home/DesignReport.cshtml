@@ -3,11 +3,10 @@
 
 @model AspNetCore.Reporting.Common.Models.ReportingControlModel
 @inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
-@functions{
-    public string GetAntiXsrfRequestToken() {
+@functions{ public string GetAntiXsrfRequestToken()
+    {
         return Xsrf.GetAndStoreTokens(this.Context).RequestToken;
-    }
-}
+    } }
 <script>
     function DesignerBeforeRender(args) {
         var designer = args.designerModel;
@@ -33,29 +32,35 @@
     }
 </script>
 <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken" value="@GetAntiXsrfRequestToken()">
-@{
-    ViewData["Title"] = Model.Title;
+@{ ViewData["Title"] = Model.Title;
     var designerRender = Html.DevExpress().ReportDesigner("ReportDesigner")
         .Height("800px")
         .AutoBind(false)
         .QueryBuilderHandlerUri("/DXXQBMVC")
         .ReportDesignerHandlerUri("/DXXRDMVC")
         .ReportPreviewHandlerUri("/DXXRDVMVC")
-        .ClientSideModelSettings(clientSide => {
+        .ClientSideModelSettings(clientSide =>
+        {
             clientSide.IncludeLocalization = false;
         })
-        .ClientSideEvents(events => {
+        .ClientSideEvents(events =>
+        {
             events.CustomizeLocalization("CustomizeLocalization");
             events.BeforeRender("DesignerBeforeRender");
             events.ExitDesigner("Exit");
         });
-    if(string.IsNullOrEmpty(Model.Id)) {
+    if (string.IsNullOrEmpty(Model.Id))
+    {
         designerRender.Bind(new XtraReport());
-    } else {
+    }
+    else
+    {
         designerRender.Bind(Model.Id);
     }
-    @:@designerRender.Build("reportDesignerOptions")
+   
+    @designerRender.RenderHtml()
 }
+
 
 @section Scripts {
     <link href="~/css/dx-reporting-skeleton-screen.css" rel="stylesheet" />
@@ -66,10 +71,5 @@
     <script src="~/js/viewer.part.bundle.js"></script>
     <script src="~/js/designer.part.bundle.js"></script>
 
-    <script type="text/javascript">
-        (function() {
-            ko.applyBindings({ reportDesignerOptions: @designerRender });
-        })()
-    </script>
+    @designerRender.RenderScripts()
 }
-

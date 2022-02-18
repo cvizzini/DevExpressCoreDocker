@@ -24,7 +24,12 @@ namespace AspNetCore.Reporting.MVC.Controllers {
             return View(reportData);
         }
 
-        public IActionResult DesignReport(ReportingControlModel model) {
+        public IActionResult Designer() {
+            return View();
+        }
+
+        public IActionResult DesignReport(ReportingControlModel model)
+        {
             return View(model);
         }
 

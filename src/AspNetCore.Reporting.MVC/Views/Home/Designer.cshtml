@@ -1,0 +1,50 @@
+﻿<script type="text/javascript">
+    function customizeActions(s, e) {
+        var actionNewReport = e.GetById(DevExpress.Reporting.Designer.Actions.ActionId.NewReport);
+        if (actionNewReport)
+            actionNewReport.visible = false;
+        var actionNewReportWizard = e.GetById(DevExpress.Reporting.Designer.Actions.ActionId.NewReportViaWizard);
+        if (actionNewReportWizard)
+            actionNewReportWizard.visible = false;
+        var actionReportWizard = e.GetById(DevExpress.Reporting.Designer.Actions.ActionId.ReportWizard);
+        if (actionReportWizard)
+            actionReportWizard.visible = false;
+        var actionAddDataSource = e.GetById(DevExpress.Reporting.Designer.Actions.ActionId.AddDataSource);
+        if (actionAddDataSource)
+            actionAddDataSource.visible = false;
+        var actionAddSqlDataSource = e.GetById(DevExpress.Reporting.Designer.Actions.ActionId.AddSqlDataSource);
+        if (actionAddSqlDataSource)
+            actionAddSqlDataSource.visible = false;
+        var actionAddMultiQuerySqlDataSource = e.GetById(DevExpress.Reporting.Designer.Actions.ActionId.AddMultiQuerySqlDataSource);
+        if (actionAddMultiQuerySqlDataSource)
+            actionAddMultiQuerySqlDataSource.visible = false;
+        var actionValidateBindings = e.GetById(DevExpress.Reporting.Designer.Actions.ActionId.ValidateBindings);
+        if (actionValidateBindings)
+            actionValidateBindings.visible = false;
+        var actionSaveAs = e.GetById(DevExpress.Reporting.Designer.Actions.ActionId.SaveAs);
+        //if (actionSaveAs)
+        //    actionSaveAs.visible = false;
+        var actionLocalization= e.GetById(DevExpress.Reporting.Designer.Actions.ActionId.Localization);
+        if (actionLocalization)
+            actionLocalization.visible = false;
+    }
+</script>
+
+@{
+    var designerRender = Html.DevExpress().ReportDesigner("reportDesigner")
+        .Height("1000px")
+        .ClientSideEvents(configure => { configure.CustomizeMenuActions("customizeActions"); });
+    @designerRender.RenderHtml()
+}
+
+@section Scripts {
+    <link href="~/css/dx-reporting-skeleton-screen.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/viewer.part.bundle.css" />
+    <link rel="stylesheet" href="~/css/designer.part.bundle.css" />
+
+    <script src="~/js/reporting.thirdparty.bundle.js"></script>
+    <script src="~/js/viewer.part.bundle.js"></script>
+    <script src="~/js/designer.part.bundle.js"></script>
+
+    @designerRender.RenderScripts()
+}

@@ -33,22 +33,22 @@
         .ClientSideModelSettings(clientSide => {
             clientSide.IncludeLocalization = false;
         })
-    .Height("900px")
+    .Height("1000px")
     .HandlerUri("/DXXRDVMVC")
     .AutoBind(false)
     .Bind(Model.Id);
-    @:@viewerRender.Build("viewerModel")
+    @viewerRender.RenderHtml()
 }
+
 
 @section Scripts {
     <link href="~/css/dx-reporting-skeleton-screen.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/viewer.part.bundle.css" />
+    <link rel="stylesheet" href="~/css/designer.part.bundle.css" />
+
     <script src="~/js/reporting.thirdparty.bundle.js"></script>
     <script src="~/js/viewer.part.bundle.js"></script>
+    <script src="~/js/designer.part.bundle.js"></script>
 
-    <script type="text/javascript">
-        (function() {
-            ko.applyBindings({ viewerModel: @viewerRender });
-        })()
-    </script>
+    @viewerRender.RenderScripts()
 }
